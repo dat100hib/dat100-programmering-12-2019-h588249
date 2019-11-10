@@ -12,6 +12,26 @@ public class SkrivBlogg {
 
 	public static boolean skriv(Blogg samling, String filnavn) {
 
-		throw new UnsupportedOperationException(TODO.method());
+		try
+		{
+			PrintWriter writer = new PrintWriter(MAPPE + filnavn);
+
+			writer.println(samling.getAntall());
+			for (var innlegg : samling.getSamling())
+			{
+				if (innlegg != null)
+				{
+					writer.print(innlegg);
+				}
+			}
+
+			writer.close();
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+
+		return true;
 	}
 }
